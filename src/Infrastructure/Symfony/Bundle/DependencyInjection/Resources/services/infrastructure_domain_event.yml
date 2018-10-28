@@ -1,0 +1,14 @@
+services:
+
+  makespace.infrastructure.domain_event_publisher_sync:
+    class: MakeSpace\Infrastructure\Bus\Event\DomainEventPublisherSync
+    public: false
+
+  makespace.infrastructure.domain_event_subscribers_configuration:
+    class: MakeSpace\Infrastructure\Bus\Event\DomainEventSubscribersConfiguration
+
+  makespace.infrastructure.domain_event_mapping:
+    class: MakeSpace\Infrastructure\Bus\Event\DomainEventMapping
+
+  makespace.infrastructure.subscribers_mapping:
+    class: MakeSpace\Infrastructure\Bus\Event\SubscribersMapping

@@ -1,0 +1,13 @@
+parameters:
+    makespace_domain: 'http://local.www.makespace.landing.com:84'
+    redis_cache_host: makespace_redis
+    redis_cache_port: 6380
+    cdn_www_url: 'http://local.www.makespace.landing.com:83'
+    makespace_database_driver: pdo_mysql
+    makespace_database_host: makespace_castellar_mysql
+    makespace_database_port: 3306
+    makespace_database_name: makespace_castellar_local
+    makespace_database_user: makespace_castellar_local
+    makespace_database_password: 1234
+    makespace_database_devmode: true
+    env_key: '%env(APP_ENV_KEY)%'

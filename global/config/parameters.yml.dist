@@ -1,0 +1,8 @@
+parameters:
+    locale:
+    secret:
+    aws.s3.bucket.name:
+    aws.credential.key:
+    aws.credential.secret:
+    country:
+    language:

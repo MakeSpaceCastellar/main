@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    MakeSpace\Infrastructure\Symfony\Command\:
+        resource: '../../../../Command/*'
+        exclude: '../../../../Command/Cache/CacheInvalidatorCommand.php'
+
+    MakeSpace\Infrastructure\Symfony\Command\Cache\CacheInvalidatorCommand:
+        arguments:
+            - '@makespace.infrastructure.client.redis'

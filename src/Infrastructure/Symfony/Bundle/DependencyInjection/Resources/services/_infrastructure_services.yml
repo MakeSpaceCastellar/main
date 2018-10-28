@@ -1,0 +1,39 @@
+imports:
+    - { resource: infrastructure_domain_event.yml }
+    - { resource: infrastructure_shared.yml }
+    - { resource: infrastructure_console_command.yml }
+
+services:
+    makespace.infrastructure.command_bus:
+        alias: MakeSpace\Infrastructure\Bus\Command\CommandBusSync
+
+    makespace.infrastructure.domain_event_publisher:
+        alias: makespace.infrastructure.domain_event_publisher_sync
+
+    MakeSpace\Infrastructure\Bus\Query\QueryBusSync:
+        public: false
+        lazy: true
+
+    MakeSpace\Infrastructure\Bus\Command\CommandBusSync:
+       public: false
+       lazy: true
+
+    makespace.infrastructure.query_bus:
+        alias: MakeSpace\Infrastructure\Bus\Query\QueryBusSync
+
+    MakeSpace\Infrastructure\Bus\Query\CachedQueryBusSync:
+        public: false
+        lazy: true
+        arguments:
+            - '@makespace.infrastructure.cache.adapter.redis'
+            - '@makespace.infrastructure.query_bus'
+            - '%env_key%'
+
+    makespace.infrastructure.cached_query_bus:
+        alias: MakeSpace\Infrastructure\Bus\Query\CachedQueryBusSync
+
+    makespace.infrastructure.database_connections:
+        class: MakeSpace\Infrastructure\Doctrine\DatabaseConnections
+
+    makespace.infrastructure.uuid_generator:
+        class: MakeSpace\Infrastructure\Uuid\UuidGenerator

@@ -1,0 +1,9 @@
+imports:
+    - { resource: infrastructure_config.yml }
+
+services:
+    makespace.infrastructure.client.redis:
+        class: \Redis
+        factory: ['Symfony\Component\Cache\Adapter\RedisAdapter', createConnection]
+        arguments:
+            - 'redis://%redis_cache_host%:%redis_cache_port%'

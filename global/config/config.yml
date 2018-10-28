@@ -1,0 +1,9 @@
+imports:
+    - { resource: parameters.yml }
+
+aws:
+    version: latest
+    region: eu-west-1
+    credentials:
+        key: '%aws.credential.key%'
+        secret: '%aws.credential.secret%'

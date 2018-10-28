@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+        beStrictAboutOutputDuringTests="true"
+        beStrictAboutChangesToGlobalState="true"
+        beStrictAboutTestsThatDoNotTestAnything="false"
+        beStrictAboutTodoAnnotatedTests="true"
+        bootstrap="./vendor/autoload.php"
+        colors="true">
+
+    <testsuites>
+        <testsuite name="integration">
+            <directory suffix="Should.php">./tests/Integration</directory>
+        </testsuite>
+        <testsuite name="behavior">
+            <directory suffix="Should.php">./tests/Unit</directory>
+            <directory suffix="Should.php">./applications/landing/tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <!-- Needed for the tests code coverage report -->
+        <whitelist>
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory suffix=".php">./src/Test</directory>
+                <directory suffix=".php">./src/Infrastructure</directory>
+                <directory suffix=".php">./src/Context/*/Infrastructure</directory>
+                <directory suffix=".php">./src/Context/*/Module/*/Infrastructure</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+    <listeners>
+        <!-- Useful in order to warn about the lack of the Mockery::close() method call while ending a test -->
+        <listener class="\Mockery\Adapter\Phpunit\TestListener"/>
+    </listeners>
+</phpunit>

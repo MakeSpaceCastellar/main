@@ -1,0 +1,26 @@
+services:
+    Symfony\Component\Cache\Adapter\RedisAdapter:
+        arguments:
+            - '@makespace.infrastructure.client.redis'
+            - 'v2-%env_key%'
+            - 14400
+
+    makespace.infrastructure.cache.adapter.redis:
+        alias: Symfony\Component\Cache\Adapter\RedisAdapter
+
+    makespace.infrastructure.database:
+        class: Doctrine\ORM\EntityManager
+        factory: [MakeSpace\Infrastructure\Doctrine\DoctrineEntityManagerFactory, create]
+        arguments:
+          -
+            driver:   '%makespace_database_driver%'
+            host:     '%makespace_database_host%'
+            port:     '%makespace_database_port%'
+            dbname:   '%makespace_database_name%'
+            user:     '%makespace_database_user%'
+            password: '%makespace_database_password%'
+            charset:  UTF8
+            options:
+                1002: "SET NAMES 'UTF8'"
+          - '%makespace_database_devmode%'
+        lazy: true

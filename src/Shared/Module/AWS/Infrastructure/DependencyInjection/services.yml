@@ -1,0 +1,10 @@
+services:
+    MakeSpace\Shared\Module\AWS\Domain\Service\AmazonS3Service:
+        arguments:
+            $bucket : '%aws.s3.bucket.name%'
+            $s3arguments:
+                credentials:
+                    key: '%aws.credential.key%'
+                    secret: '%aws.credential.secret%'
+                region: 'eu-west-1'
+                version: 'latest'

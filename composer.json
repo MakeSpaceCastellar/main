@@ -1,0 +1,150 @@
+{
+    "name": "makespace_castellar/applications",
+    "type": "project",
+    "description": "Make Space Castellar API, Landing, etc....",
+    "require": {
+        "php": "^7.1",
+        "ext-apcu": "*",
+        "ext-iconv": "*",
+        "ext-pdo": "*",
+        "aws/aws-sdk-php-symfony": "^2.0",
+        "azuyalabs/yasumi": "^1.7",
+        "doctrine/dbal": "^2.6",
+        "doctrine/doctrine-bundle": "^1.9",
+        "doctrine/orm": "^2.6",
+        "dompdf/dompdf": "^0.8.2",
+        "friendsofsymfony/jsrouting-bundle": "^2.2",
+        "friendsofsymfony/rest-bundle": "^2.3",
+        "friendsofsymfony/user-bundle": "~2.0",
+        "geoip2/geoip2": "^2.8",
+        "guzzlehttp/guzzle": "^6.3",
+        "iio/libmergepdf": "^3.1",
+        "incenteev/composer-parameter-handler": "^2.1",
+        "jbroadway/urlify": "^1.1",
+        "jms/serializer-bundle": "^2.3",
+        "lambdish/phunctional": "^1.0",
+        "maknz/slack": "^1.7",
+        "nmure/crawler-detect-bundle": "^2.0.0",
+        "prooph/service-bus": "^6.2",
+        "ramsey/uuid": "^3.8",
+        "ramsey/uuid-doctrine": "^1.4",
+        "sensio/framework-extra-bundle": "^5.1",
+        "symfony/asset": "^4.0",
+        "symfony/console": "^4.0",
+        "symfony/debug-bundle": "^4.0",
+        "symfony/expression-language": "^4.1",
+        "symfony/form": "^4.0",
+        "symfony/framework-bundle": "^4.0",
+        "symfony/http-kernel": "^4",
+        "symfony/lts": "^4@dev",
+        "symfony/monolog-bundle": "^3.1",
+        "symfony/process": "^4.0",
+        "symfony/property-access": "^4.0",
+        "symfony/proxy-manager-bridge": "^4.0",
+        "symfony/security-bundle": "^4.0",
+        "symfony/stopwatch": "^4.0",
+        "symfony/swiftmailer-bundle": "^3.0",
+        "symfony/translation": "^4.0",
+        "symfony/twig-bundle": "^4.0",
+        "symfony/validator": "^4.0",
+        "symfony/web-profiler-bundle": "^4.0",
+        "symfony/yaml": "^4.0",
+        "twig/extensions": "^1.5",
+        "twig/twig": "^2.4",
+        "willdurand/js-translation-bundle": "^2.6"
+    },
+    "require-dev": {
+        "behat/behat": "^3.4",
+        "behat/mink": "^1.7",
+        "behat/mink-browserkit-driver": "^1.3",
+        "behat/mink-extension": "^2.3",
+        "behat/symfony2-extension": "^2.1",
+        "brainmaestro/composer-git-hooks": "^2.4",
+        "composer/composer": "^1.6",
+        "doctrine/doctrine-migrations-bundle": "^1.0",
+        "fzaninotto/faker": "^1.7",
+        "hamcrest/hamcrest-php": "^2.0",
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^6.3",
+        "squizlabs/php_codesniffer": "^3.1",
+        "symfony/dotenv": "^4.0",
+        "symfony/var-dumper": "^4.0.3"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd"
+        },
+        "symfony-scripts": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-install-cmd": [
+            "@symfony-scripts",
+            "@build-artifact-scripts",
+            "vendor/bin/cghooks add --no-lock"
+        ],
+        "post-update-cmd": [
+            "@symfony-scripts",
+            "vendor/bin/cghooks update"
+        ],
+        "build-artifact-scripts": [
+            "MakeSpace\\Landing\\Infrastructure\\Composer\\FrontendDependenciesInstaller::installFrontendDependencies",
+            "MakeSpace\\Landing\\Infrastructure\\Composer\\JsTranslationsDumper::dumpJsTranslations",
+            "MakeSpace\\Landing\\Infrastructure\\Composer\\JsRoutesDumper::dumpJsRoutes",
+            "MakeSpace\\Landing\\Infrastructure\\Composer\\CdnVersionGenerator::generate",
+            "MakeSpace\\Landing\\Infrastructure\\Composer\\AssetsPublisher::publishAssets"
+        ],
+        "cghooks": "vendor/bin/cghooks"
+    },
+    "extra": {
+        "symfony": {
+            "id": "01C4EQBJ5XFPEGQN0F2WJSCY5P",
+            "allow-contrib": true
+        },
+        "incenteev-parameters": [
+            {
+                "file": "global/config/parameters.yml"
+            },
+            {
+                "file": "src/Infrastructure/Symfony/Bundle/DependencyInjection/Resources/infrastructure_parameters.yml"
+            }
+        ],
+        "hooks": {
+            "pre-commit": "vendor/bin/phpunit --testsuite='behavior' && vendor/bin/phpcs --cache -n src"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "MakeSpace\\": "src/",
+            "MakeSpace\\Landing\\": "applications/landing/src/"
+        },
+        "files": [
+            "src/utils.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MakeSpace\\Tests\\": [
+                "tests/",
+                "applications/landing/tests/"
+            ]
+        },
+        "files": [
+            "vendor/symfony/var-dumper/Resources/functions/dump.php"
+        ]
+    },
+    "replace": {
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php71": "*",
+        "symfony/polyfill-php70": "*",
+        "symfony/polyfill-php56": "*"
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    }
+}

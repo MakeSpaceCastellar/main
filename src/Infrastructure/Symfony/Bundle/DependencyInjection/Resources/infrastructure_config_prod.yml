@@ -1,0 +1,9 @@
+imports:
+    - { resource: infrastructure_config.yml }
+
+services:
+    makespace.infrastructure.client.redis:
+        class: \RedisCluster
+        arguments:
+            - '%redis_cache_cluster_name%'
+            - '%redis_nodes%'
