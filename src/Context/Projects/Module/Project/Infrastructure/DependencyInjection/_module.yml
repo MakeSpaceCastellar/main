@@ -1,0 +1,5 @@
+imports:
+  - { resource: _infrastructure.yml }
+  - { resource: _querys.yml }
+  - { resource: _use_cases.yml }
+  - { resource: _services.yml }

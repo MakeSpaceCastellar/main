@@ -1,0 +1,4 @@
+imports:
+      - { resource: infrastructure/_infrastructure.yml }
+      - { resource: modules/_modules.yml }
+      - { resource: services/_services.yml }

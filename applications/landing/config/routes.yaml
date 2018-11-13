@@ -1,0 +1,5 @@
+homepage:
+    path:   /
+    defaults:  { _controller: MakeSpace\Landing\Module\Home\Infrastructure\Symfony\HomeGetController }
+
+

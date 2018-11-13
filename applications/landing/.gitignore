@@ -1,0 +1,12 @@
+###> symfony/framework-bundle ###
+symfony.lock
+.env
+/public/*
+!/public/index.php
+/var/
+###< symfony/framework-bundle ###
+
+/assets/molecules/router/fos_js_routes.json
+/assets/molecules/translator/translations/
+/app/config/parameters.yml
+/config/packages/dev/doctrine.yaml

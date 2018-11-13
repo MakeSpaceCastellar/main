@@ -1,0 +1,5 @@
+services:
+    makespace.projects.query_bus:
+        alias: makespace.infrastructure.query_bus
+    makespace.projects.cached_query_bus:
+        alias: makespace.infrastructure.cached_query_bus

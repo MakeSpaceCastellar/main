@@ -1,0 +1,7 @@
+parameters:
+    app.database.api.dbname:      xxx
+    app.database.api.user:        xxx
+    app.database.api.password:    xxx
+    app.database.api.master.host: xxx
+    app.database.api.master.port: xxx
+    env(DATABASE_URL): xxx

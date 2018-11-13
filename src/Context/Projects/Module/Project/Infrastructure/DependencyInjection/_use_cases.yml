@@ -1,0 +1,6 @@
+services:
+    makespace.projects.project.find_projects:
+        class: MakeSpace\Context\Projects\Module\Project\Application\Find\FindProjects\FindProjectsUseCase
+        arguments:
+            - '@makespace.projects.project.projects_finder'
+        public: false

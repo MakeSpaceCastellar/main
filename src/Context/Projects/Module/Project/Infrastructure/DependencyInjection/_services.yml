@@ -1,0 +1,6 @@
+services:
+    makespace.projects.project.projects_finder:
+        class: MakeSpace\Context\Projects\Module\Project\Domain\Service\ProjectsFinder
+        arguments:
+            - '@makespace.projects.project.repository'
+        public: false

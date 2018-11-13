@@ -1,0 +1,19 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    MakeSpace\Landing\:
+        resource: '../src/*'
+        exclude: '../src/{Exception}'
+
+    MakeSpace\Landing\Infrastructure\Twig\:
+        resource: '../src/Infrastructure/Twig/*'
+        tags: [twig.extension]
+
+    MakeSpace\Landing\Infrastructure\Twig\AssetExtension:
+        arguments:
+            - '%cdn_version%'
+            - '%cdn_www_url%'
+        tags: [twig.extension]

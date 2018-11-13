@@ -1,0 +1,4 @@
+services:
+    makespace.projects.project.repository:
+        class: MakeSpace\Context\Projects\Module\Project\Infrastructure\Primitive\ProjectRepositoryPrimitive
+        arguments:

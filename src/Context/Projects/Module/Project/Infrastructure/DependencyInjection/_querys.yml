@@ -1,0 +1,7 @@
+services:
+    makespace.projects.project.query_handler.find_projects:
+        class: MakeSpace\Context\Projects\Module\Project\Application\Find\FindProjects\FindProjectsQueryHandler
+        arguments:
+            - '@makespace.projects.project.find_projects'
+        tags:
+            - { name: 'makespace.projects.query' }

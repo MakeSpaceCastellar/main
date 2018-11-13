@@ -1,0 +1,23 @@
+const { resolve } = require('path');
+const root = resolve(__dirname, '../../')  + '/';
+const basePath = resolve(root, 'assets/') + '/';
+const imagesPath = resolve(basePath, 'images/') + '/';
+const fontsPath = resolve(basePath, 'fonts/') + '/';
+const relativePublicPath = 'public/';
+const relativeDistPath = relativePublicPath + 'dist/';
+const publicPath = resolve(root, relativePublicPath) + '/';
+const distPath = resolve(root, relativeDistPath) + '/';
+const imagesDistPath = resolve(distPath, 'images/') + '/';
+const fontsDistPath = resolve(distPath, 'fonts/') + '/';
+const vendorPath = resolve(basePath, 'vendor/') + '/';
+
+module.exports.basePath = basePath;
+module.exports.imagesPath = imagesPath;
+module.exports.fontsPath = fontsPath;
+module.exports.relativeDistPath = relativeDistPath;
+module.exports.publicPath = publicPath;
+module.exports.distPath = distPath;
+module.exports.imagesDistPath = imagesDistPath;
+module.exports.fontsDistPath = fontsDistPath;
+module.exports.vendorPath = vendorPath;
+module.exports.root = root;
